@@ -1,0 +1,9 @@
+colors of sevral tasks 
+
+magenta ----> right or left 
+yellow ----> checks nodes i.e. intersections like left right plus etc
+cyan ----> u turn 
+green 
+red ----> stop 
+blue 
+no light ----> stops all lights 
