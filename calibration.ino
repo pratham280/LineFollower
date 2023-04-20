@@ -6,7 +6,7 @@ const int middle = 2;
 const int mid_left = 1;
 const int mid_right = 3;
 const int num_sens = 5;
-int thresh[num_sens];
+int thresh[num_sens], minValue[num_sens], maxValue[num_sens];
 
 const int green = 5;
 const int blue = 3;
@@ -33,27 +33,58 @@ void loop()
     }
     calibration();
     threshold();
+    while (digitalRead(startButton) == 0) // waiting for the start button
+    {                                     // Do nothing while waiting for button press
+    }
 }
 
 void calibration()
 {
-    
     delay(1000);
+    for (int i = 0; i < num_sens; i++)
+    {
+        minValues[i] = analogRead(i);
+        maxValues[i] = analogRead(i);
+    }
     for (int i = 0; i < 3000; i++)
     {
+        showSensorData();
         rotate();
-        for (int i; i < num_sens; i++)
+        for (int i = 0; i < num_sens; i++)
         {
-            if analogRead(i) < minValue[i]
-                Pass
-            if analogRead(i) > maxValue[i]
-                Pass
+            if (analogRead(i) < minValue[i])
+            {
+                minValue[i] = analogRead(i);
+            }
+            if (analogRead(i) > maxValue[i])
+            {
+                maxValue[i] = analogRead(i);
+            }
         }
     }
 }
 
-void threshold(){
-
+void threshold()
+{
+    for (int i = 0; i < num_sens; i++)
+    {
+        thresh[i] = (minValue[i] + maxValue[i]) / 2;
+        Serial.print(thresh[i]);
+        // Serial.print("   ");
+    }
+}
+void showSensorData() // just prints out
+{
+    Serial.print("Sensor 0 -");
+    Serial.print(analogRead(left));
+    Serial.print("Sensor 1 -");
+    Serial.print(analogRead(mid_left));
+    Serial.print("Sensor 2 -");
+    Serial.print(analogRead(middle));
+    Serial.print("Sensor 3 -");
+    Serial.print(analogRead(mid_right));
+    Serial.print("Sensor 4- ");
+    Serial.println(analogRead(right));
 }
 // roatate the robot on place
 void rotate()
