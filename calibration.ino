@@ -29,7 +29,11 @@ void loop()
 {
     // robot gol gol ghumta hai and takes values fast like helll
     while (digitalRead(startButton) == 0) // waiting for the start button
-    {                                     // Do nothing while waiting for button press
+    {                                     // Do nothing while waiting for buttopress
+        red();
+        delay(1000);
+        lightsoff();
+        delay(1000);
     }
     calibration();
     threshold();
@@ -40,14 +44,16 @@ void loop()
 
 void calibration()
 {
+    lightsoff();
     delay(1000);
     for (int i = 0; i < num_sens; i++)
     {
-        minValues[i] = analogRead(i);
-        maxValues[i] = analogRead(i);
+        minValue[i] = analogRead(i);
+        maxValue[i] = analogRead(i);
     }
     for (int i = 0; i < 3000; i++)
     {
+        green();
         showSensorData();
         rotate();
         for (int i = 0; i < num_sens; i++)
@@ -66,10 +72,14 @@ void calibration()
 
 void threshold()
 {
+    lightsoff();
     for (int i = 0; i < num_sens; i++)
     {
+        blue();
         thresh[i] = (minValue[i] + maxValue[i]) / 2;
         Serial.print(thresh[i]);
+        delay(1000);
+        lightsoff();
         // Serial.print("   ");
     }
 }
@@ -101,4 +111,31 @@ void botstop() // stops the bot at the end
     digitalWrite(8, HIGH);
     analogWrite(9, 0);
     analogWrite(10, 0);
+}
+
+// led functions to indicated specific tasks
+void green()
+{
+    digitalWrite(blue_led, LOW);
+    digitalWrite(green_led, HIGH); // GREEN
+    digitalWrite(red_led, LOW);
+}
+
+void red()
+{
+    digitalWrite(blue_led, LOW);
+    digitalWrite(green_led, LOW);
+    digitalWrite(red_led, HIGH);
+}
+void blue()
+{
+    digitalWrite(blue_led, HIGH);
+    digitalWrite(green_led, LOW);
+    digitalWrite(red_led, LOW); // BLUE
+}
+void lightsoff()
+{
+    digitalWrite(blue_led, LOW);
+    digitalWrite(green_led, LOW);
+    digitalWrite(red_led, LOW);
 }

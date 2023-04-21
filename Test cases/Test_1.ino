@@ -16,10 +16,59 @@ const int left_pwm = 10;
 
 const int buzzer = 3;
 
-void setup(){
+void setup()
+{
    pinMode(startButton, INPUT_PULLUP);
    pinMode(Right_mot, OUTPUT);
    pinMode(left_mot, OUTPUT);
    pinMode(right_pwm, OUTPUT);
    pinMode(left_pwm, OUTPUT);
 }
+
+void loop()
+{
+   forward();
+   delay(5000);
+
+   stop();
+
+   back();
+   delay(5000);
+
+   stop();
+
+   rotate();
+   delay(7000);
+
+   stop();
+}
+
+void forward()
+{
+}
+
+void back()
+{
+}
+void left()
+{
+}
+void right()
+{
+}
+void rotate()
+{
+}
+void stop()
+{
+   delay(1000);
+}
+/*
+the sequence will be a loop which will run :
+   front
+   back
+   left
+   right
+   rotate
+   and come back to original position
+*/
