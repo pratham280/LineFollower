@@ -25,9 +25,9 @@ Note:
 #define SENSOR_3 A2       // IR sensor 3
 #define SENSOR_4 A3       // IR sensor 4
 #define SENSOR_5 A4       // IR sensor 5
-// #define SENSOR_6 X
-// #define SENSOR_7 X
-// #define SENSOR_8 z
+#define SENSOR_6 A5
+#define SENSOR_7 A6
+#define SENSOR_8 A7
 
 // Global variables
 int last_error = 0;             // Last error for derivative term

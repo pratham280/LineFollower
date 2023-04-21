@@ -16,3 +16,4 @@ for (int i = 0; i < 3000; i++){
 	}
 
 
+calibaration runs many times and at the end it takes the average of hightst value and lowerst value
