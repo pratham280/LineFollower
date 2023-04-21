@@ -8,9 +8,9 @@ const int mid_right = 3;
 const int num_sens = 5;
 int thresh[num_sens], minValue[num_sens], maxValue[num_sens];
 
-const int green = 5;
-const int blue = 3;
-const int red = 6;
+const int green_led = 5;
+const int blue_led = 3;
+const int red_led = 6;
 
 void setup()
 {
@@ -18,9 +18,9 @@ void setup()
     pinMode(startButton, INPUT_PULLUP);
     pinMode(7, OUTPUT);
     pinMode(8, OUTPUT);
-    pinMode(blue, OUTPUT);  // blue
-    pinMode(green, OUTPUT); // green
-    pinMode(red, OUTPUT);   // red
+    pinMode(blue_led, OUTPUT);  // blue
+    pinMode(green_led, OUTPUT); // green
+    pinMode(red_led, OUTPUT);   // red
     //  lfspeed = 50000 / analogRead(7); //arbitrary conversion to convert analogRead to speed. Need to check if this works for all voltage levels
     // turnspeed = lfspeed * 0.6; // idk what is this
 }
