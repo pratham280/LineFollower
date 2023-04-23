@@ -37,30 +37,59 @@ void loop()
 
    stop();
 
-   rotate();
+   clock_rotate();
    delay(7000);
 
    stop();
+   
+   anti_rotate();
+   delay(7000);
+
+   stop();
+
 }
 
 void forward()
 {
+   digitalWrite(7, HIGH);
+   digitalWrite(8, HIGH);
+   analogWrite(9, 255);
+   analogWrite(10, 255);
 }
 
 void back()
 {
+   digitalWrite(7, HIGH);
+   digitalWrite(8, HIGH);
+   analogWrite(9, 255);
+   analogWrite(10, 255);
 }
-void left()
+// void left()
+// {
+// }
+// void right()
+// {
+// }
+void clock_rotate()
 {
+   digitalWrite(7, LOW);
+   digitalWrite(8, HIGH);
+   analogWrite(9, 255);
+   analogWrite(10, 255);
 }
-void right()
+void anti_rotate()
 {
-}
-void rotate()
-{
+   digitalWrite(7, HIGH);
+   digitalWrite(8, LOW);
+   analogWrite(9, 255);
+   analogWrite(10, 255);
 }
 void stop()
 {
+   digitalWrite(7, HIGH);
+   digitalWrite(8, HIGH);
+   analogWrite(9, 0);
+   analogWrite(10, 0);
    delay(1000);
 }
 /*
