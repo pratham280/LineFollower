@@ -21,8 +21,6 @@ void setup()
     pinMode(blue_led, OUTPUT);  // blue
     pinMode(green_led, OUTPUT); // green
     pinMode(red_led, OUTPUT);   // red
-    //  lfspeed = 50000 / analogRead(7); //arbitrary conversion to convert analogRead to speed. Need to check if this works for all voltage levels
-    // turnspeed = lfspeed * 0.6; // idk what is this
 }
 
 void loop()
